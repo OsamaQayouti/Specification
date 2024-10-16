@@ -101,12 +101,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
         return await DbContext.Set<T>().FindAsync(cancellationToken: cancellationToken, new object[] { id });
     }
 
-    /// <inheritdoc/>
-    [Obsolete("Use FirstOrDefaultAsync<T> or SingleOrDefaultAsync<T> instead. The SingleOrDefaultAsync<T> can be applied only to SingleResultSpecification<T> specifications.")]
-    public virtual async Task<T> GetBySpecAsync(ISpecification<T> specification, CancellationToken cancellationToken = default)
-    {
-        return await ApplySpecification(specification).FirstOrDefaultAsync(cancellationToken);
-    }
+  
 
     /// <inheritdoc/>
     [Obsolete("Use FirstOrDefaultAsync<T> or SingleOrDefaultAsync<T> instead. The SingleOrDefaultAsync<T> can be applied only to SingleResultSpecification<T> specifications.")]
